@@ -19,7 +19,6 @@
         <module>mall-portal</module>
         <module>mall-admin</module>
         <module>mall-mbg</module>
-        <module>mall-portal</module>
     </modules>
     <dependencies>
         <dependency>
