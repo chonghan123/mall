@@ -8,9 +8,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="mall-admin" />
         <module name="mall-application" />
+        <module name="mall-common" />
         <module name="mall-mbg" />
         <module name="mall-portal" />
-        <module name="mall-common" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
