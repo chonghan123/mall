@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <properties resource="jdbc.properties" />
-    <classPathEntry location="${localhost.jdbc.path}"/>
+    <classPathEntry location="${jdbc.path}"/>
     <context id="sqlserverTables" targetRuntime="MyBatis3">
         <!-- 生成的pojo，将implements Serializable-->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
@@ -51,6 +51,6 @@
 
 
         <!-- 列出要生成代码的所有表，这里配置的是不生成Example文件 -->
-        <table tableName="product" domainObjectName="Product"></table>
+        <table tableName="admin" domainObjectName="Admin"></table>
     </context>
 </generatorConfiguration>

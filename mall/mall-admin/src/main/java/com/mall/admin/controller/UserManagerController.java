@@ -1,17 +1,37 @@
 package com.mall.admin.controller;
 
+import com.mall.admin.service.UserManagerService;
+import com.mall.mbg.pojo.Admin;
 import common.api.Result;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
-@Controller
+@RestController
 @RequestMapping("/admin/")
 public class UserManagerController {
 
-    @RequestMapping("login")
-    public void login() {
+    @Autowired
+    private UserManagerService userManagerService;
 
-        System.out.println(111);
+    @RequestMapping("login")
+    public Result<Object> login(String username, String password) {
+
+        Admin admin = userManagerService.login(username, password);
+
+        return Result.success(admin);
+    }
+
+    @RequestMapping("register")
+    public Result<Object> register(Admin admin) {
+        Boolean flag = userManagerService.register(admin);
+
+        if (flag) {
+            return Result.success(null, "创建成功");
+        } else {
+
+            return Result.failed("创建失败");
+        }
     }
 }
