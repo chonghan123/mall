@@ -1,11 +1,14 @@
 package com.mall.admin.controller;
 
 import com.mall.admin.service.UserManagerService;
+import com.mall.common.api.Result;
+import com.mall.common.redis.RedisUtil;
 import com.mall.mbg.pojo.Admin;
-import common.api.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpSession;
 
 
 @RestController
@@ -15,10 +18,15 @@ public class UserManagerController {
     @Autowired
     private UserManagerService userManagerService;
 
+    @Autowired
+    public RedisUtil redisUtil;
+
     @RequestMapping("login")
-    public Result<Object> login(String username, String password) {
+    public Result<Object> login(HttpSession session, String username, String password) {
 
         Admin admin = userManagerService.login(username, password);
+        redisUtil.set(session.getId(), username);
+        redisUtil.get(session.getId());
 
         return Result.success(admin);
     }
@@ -34,4 +42,5 @@ public class UserManagerController {
             return Result.failed("创建失败");
         }
     }
+
 }

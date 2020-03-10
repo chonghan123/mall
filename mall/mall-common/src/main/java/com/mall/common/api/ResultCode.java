@@ -1,4 +1,4 @@
-package common.api;
+package com.mall.common.api;
 
 public enum ResultCode implements IErrorCode {
 

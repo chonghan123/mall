@@ -1,4 +1,4 @@
-package common.api;
+package com.mall.common.api;
 
 /**
  * 封装API的错误码
