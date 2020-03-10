@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 public class UserManagerController {
 
     @Autowired
-    private UserManagerService userManagerService;
+    public UserManagerService userManagerService;
 
     @Autowired
     public RedisUtil redisUtil;
@@ -25,10 +25,17 @@ public class UserManagerController {
     public Result<Object> login(HttpSession session, String username, String password) {
 
         Admin admin = userManagerService.login(username, password);
-        redisUtil.set(session.getId(), username);
-        redisUtil.get(session.getId());
+        if (null!=admin) {
 
-        return Result.success(admin);
+            redisUtil.set(session.getId(), username);
+
+            return Result.success(admin);
+        } else {
+
+            return Result.failed("账号或者密码错误");
+        }
+
+
     }
 
     @RequestMapping("register")
