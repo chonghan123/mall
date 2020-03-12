@@ -33,7 +33,7 @@ public class RedisUtil {
      */
     public boolean expire(String key, long time) {
         try {
-            if (time > 0) {
+            if (time >0) {
                 redisTemplate.expire(key, time, TimeUnit.SECONDS);
             }
             return true;
@@ -358,8 +358,9 @@ public class RedisUtil {
     public long sSetAndTime(String key, long time, Object... values) {
         try {
             Long count = redisTemplate.opsForSet().add(key, values);
-            if (time > 0)
+            if (time > 0) {
                 expire(key, time);
+            }
             return count;
         } catch (Exception e) {
             return 0;

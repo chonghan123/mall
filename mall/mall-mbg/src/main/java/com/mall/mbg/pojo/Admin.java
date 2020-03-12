@@ -10,7 +10,7 @@ public class Admin implements Serializable {
 
     private String password;
 
-    private String nickname;
+    private String nickName;
 
     private Integer role;
 
@@ -19,6 +19,8 @@ public class Admin implements Serializable {
     private Date updateTime;
 
     private String phone;
+
+    private Integer status;
 
     private static final long serialVersionUID = 1L;
 
@@ -46,12 +48,12 @@ public class Admin implements Serializable {
         this.password = password == null ? null : password.trim();
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname == null ? null : nickname.trim();
+    public void setNickName(String nickName) {
+        this.nickName = nickName == null ? null : nickName.trim();
     }
 
     public Integer getRole() {
@@ -84,5 +86,13 @@ public class Admin implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone == null ? null : phone.trim();
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }
